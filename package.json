@@ -1,6 +1,6 @@
 {
   "name": "vscodextrello",
-  "displayName": "vscodextrello",
+  "displayName": "VSCode X Trello",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -10,16 +10,36 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscodextrello.trello"
+    "onCommand:VSCodeXTrello.createTrelloCard",
+    "onCommand:VSCodeXTrello.getTrelloToken",
+    "onCommand:VSCodeXTrello.setTrelloToken"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscodextrello.trello",
-        "title": "Trello"
+        "command": "VSCodeXTrello.createTrelloCard",
+        "title": "VSCodeXTrello: Create Trello Card"
+      },
+      {
+        "command": "VSCodeXTrello.getTrelloToken",
+        "title": "VSCodeXTrello: Get Trello Token"
+      },
+      {
+        "command": "VSCodeXTrello.setTrelloToken",
+        "title": "VSCodeXTrello: Set Trello Token"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "VSCode X Trello Configuration",
+      "properties": {
+        "vscodextrello.trelloToken": {
+          "type": "string",
+          "description": "Your Trello Token",
+          "default": ""
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -41,5 +61,10 @@
     "mocha": "^8.0.1",
     "typescript": "^3.8.3",
     "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "open": "0.0.5",
+    "request": "^2.88.2"
   }
 }
