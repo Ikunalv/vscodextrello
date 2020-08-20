@@ -21,6 +21,7 @@ Welcome to VSCode X Trello extension for VS Code! This extention provide the fol
 3. Open up some code and enter Command `VSCodeXTrello: Pin TODOs on Trello`
 
 <img  src="https://github.com/Ikunalv/vscodextrello/blob/master/src/img/3.gif?raw=true" alt="Pinning Tasks">
+
 ## Release Notes
 
 Currently, the extension supports only single line comments.
