@@ -11,10 +11,14 @@ Welcome to VSCode X Trello extension for VS Code! This extention provide the fol
 ## Setup Guide
 
 1. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (Mac), Enter `VSCodeXTrello: Authorize Trello`, and copy token.
-   <img style="height:100px;" src="https://github.com/Ikunalv/vscodextrello/blob/master/src/img/1.png?raw=true" alt="Trello Viewer tree view markup">
+
+   <img  src="https://github.com/Ikunalv/vscodextrello/blob/master/src/img/1.gif?raw=true" alt="Trello Authorization">
 2. Enter Command `VSCodeXTrello: Set Trello Token`, and paste token.
+
+<img  src="https://github.com/Ikunalv/vscodextrello/blob/master/src/img/2.gif?raw=true" alt="Setting Authorization Code">
 3. Open up some code and enter Command `VSCodeXTrello: Pin TODOs on Trello`
 
+<img  src="https://github.com/Ikunalv/vscodextrello/blob/master/src/img/3.gif?raw=true" alt="Pinning Tasks">
 ## Release Notes
 
 Currently, the extension supports only single line comments.
