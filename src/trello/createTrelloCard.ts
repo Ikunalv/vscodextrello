@@ -2,6 +2,7 @@ import { downloadAndUnzipVSCode } from "vscode-test";
 import * as vscode from "vscode";
 import { Configuration } from "../utils/config";
 import { Constants } from "../utils/constant";
+import { Console } from "console";
 
 var path = require("path");
 let request = require("request");
@@ -39,7 +40,14 @@ export function createTrelloCardCmd(): void {
 }
 
 function createTrelloOperations(): void {
-  showBoardsQuickPick()
+  showCommentsQuickPick(trelloToDo)
+    .then((taskNames) => {
+      let selectedTasks: string[] = taskNames as string[];
+      trelloToDo.tasks = trelloToDo.tasks.filter(
+        (task) => selectedTasks.indexOf(task.taskName) > -1
+      );
+    })
+    .then(showBoardsQuickPick)
     .then((boardName) => {
       return (trelloToDo.selectedBoard = trelloToDo.boards.find(
         (board) => board.name === boardName
@@ -52,35 +60,24 @@ function createTrelloOperations(): void {
       ) as PickerItem;
       return trelloToDo;
     })
-    
+
     .then(showLabelsQuickPick)
     .then((labelNames) => {
       let selectedLabelNames: string[] = labelNames as string[];
       trelloToDo.selectedLabels = trelloToDo.labels.filter(
         (label) => selectedLabelNames.indexOf(label.name) > -1
       );
-      return trelloToDo;
     })
-    .then(showCommentsQuickPick)
-    .then((taskNames) => {
-        let selectedTasks:string[] = taskNames as string[];
-        trelloToDo.tasks = trelloToDo.tasks.filter(
-            (task)=>selectedTasks.indexOf(task.taskName)>-1
-        );
-      console.log(trelloToDo.tasks);
-      if(trelloToDo.tasks.length>0){
-       trelloToDo.tasks.forEach((task)=>{
-            trelloToDo.title = task.taskName;
-            trelloToDo.description = `*${path.basename(editor.document.fileName)} at Line ${task.lineNumber}*`;
-            createTrelloCard(trelloToDo);
-       });
-      }
-      else{
-        vscode.window.showErrorMessage("Atleast on task should be selected");
-        return;
-      }
+    .then(() => {
+      trelloToDo.tasks.forEach((task) => {
+        trelloToDo.title = task.taskName;
+        trelloToDo.description = `*${path.basename(
+          editor.document.fileName
+        )} at Line ${task.lineNumber}*`;
+        createTrelloCard(trelloToDo);
+      });
     });
-    
+
   /* .then(showTODOTitle)
     .then((title) => {
       trelloToDo.title = title as string;
@@ -240,25 +237,29 @@ async function showCommentsQuickPick(trelloToDo: TrelloToDo) {
     text.split("\n").map((codeLine, index) => {
       if (regex.test(codeLine)) {
         let task = <Task>{};
-        task.taskName = codeLine.trim();
+        task.taskName = codeLine
+          .substring(codeLine.indexOf(":") + 1, codeLine.length)
+          .trim();
         task.lineNumber = String(index + 1);
 
         tasks.push(task);
-        console.log(
-          "Found " + codeLine.trim() + " on line number " + (index + 1)
-        );
       }
     });
-    if (tasks.length > 0){
-        trelloToDo.tasks = tasks; 
-    return trelloToDo.tasks.map((task) => task.taskName);
-}
-    else return [];
+    if (tasks.length > 0) {
+      trelloToDo.tasks = tasks;
+      return trelloToDo.tasks.map((task) => task.taskName);
+    } else return [];
   };
-  return vscode.window.showQuickPick(getTasks(), {
-    canPickMany: true,
-    placeHolder: "Select the TODOs to pin to the List",
-  });
+  if (getTasks().length > 0)
+    return vscode.window.showQuickPick(getTasks(), {
+      canPickMany: true,
+      placeHolder: "Select the TODOs to pin to the List",
+    });
+  else {
+    vscode.window.showErrorMessage(
+      "No TODOs found in the current file. Please check the extension page for the correct TODO format"
+    );
+  }
 }
 
 function showTODOTitle() {
@@ -317,6 +318,8 @@ async function createTrelloCard(trelloToDo: TrelloToDo) {
 
     trelloToDo.url = JSON.parse(body).url;
     //Utils.insertToDoText(editor, trelloToDo.title, trelloToDo.url, "Trello Card");
-    vscode.window.showInformationMessage(`Trello Card Created!\n${trelloToDo.url}`);
+    vscode.window.showInformationMessage(
+      `Trello Card Created!\n${trelloToDo.url}`
+    );
   });
 }
