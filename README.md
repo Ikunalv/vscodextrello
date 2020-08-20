@@ -26,7 +26,7 @@ Welcome to VSCode X Trello extension for VS Code! This extention provide the fol
 
 Currently, the extension supports only single line comments.
 
-Multi-line comments and much more features coming soon...
+Multi-line comments support and more features coming soon...
 
 ---
 
