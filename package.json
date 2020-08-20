@@ -3,6 +3,18 @@
   "displayName": "VSCode X Trello",
   "description": "",
   "version": "0.0.1",
+  "publisher": "KunalV",
+  "author": {
+    "email": "kvaidya2917@gmail.com",
+    "name": "Kunal Vaidya",
+    "url": "https://kunalv.com"
+  },
+  "keywords": [
+    "todo",
+    "trello",
+    "manage",
+    "annotation"
+  ],
   "engines": {
     "vscode": "^1.48.0"
   },
@@ -10,20 +22,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:VSCodeXTrello.createTrelloCard",
-    "onCommand:VSCodeXTrello.getTrelloToken",
+    "onCommand:VSCodeXTrello.pinTODOs",
+    "onCommand:VSCodeXTrello.authorizeTrello",
     "onCommand:VSCodeXTrello.setTrelloToken"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "VSCodeXTrello.createTrelloCard",
-        "title": "VSCodeXTrello: Create Trello Card"
+        "command": "VSCodeXTrello.pinTODOs",
+        "title": "VSCodeXTrello: Pin TODOs on Trello"
       },
       {
-        "command": "VSCodeXTrello.getTrelloToken",
-        "title": "VSCodeXTrello: Get Trello Token"
+        "command": "VSCodeXTrello.authorizeTrello",
+        "title": "VSCodeXTrello: Authorize Trello"
       },
       {
         "command": "VSCodeXTrello.setTrelloToken",

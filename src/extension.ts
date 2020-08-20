@@ -9,9 +9,18 @@ import { setTrelloTokenCmd } from "./trello/setTrelloToken";
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   const disposableCommands = [
-	vscode.commands.registerCommand("VSCodeXTrello.createTrelloCard", createTrelloCardCmd),
-	vscode.commands.registerCommand("VSCodeXTrello.getTrelloToken", getTrelloTokenCmd),
-	vscode.commands.registerCommand("VSCodeXTrello.setTrelloToken", setTrelloTokenCmd)
+    vscode.commands.registerCommand(
+      "VSCodeXTrello.pinTODOs",
+      createTrelloCardCmd
+    ),
+    vscode.commands.registerCommand(
+      "VSCodeXTrello.authorizeTrello",
+      getTrelloTokenCmd
+    ),
+    vscode.commands.registerCommand(
+      "VSCodeXTrello.setTrelloToken",
+      setTrelloTokenCmd
+    ),
   ];
   disposableCommands.forEach((disposable) =>
     context.subscriptions.push(disposable)

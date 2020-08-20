@@ -257,7 +257,7 @@ async function showCommentsQuickPick(trelloToDo: TrelloToDo) {
     });
   else {
     vscode.window.showErrorMessage(
-      "No TODOs found in the current file. Please check the extension page for the correct TODO format"
+      "No TODOs found in the current file.  Go to extension page for quick guide on TODO format."
     );
   }
 }
@@ -289,9 +289,8 @@ function showTODODescription() {
 async function createTrelloCard(trelloToDo: TrelloToDo) {
   let apiCall = "/cards";
   let apiUrl = `${Constants.TRELLO_BASE_URL}${apiCall}`;
-  //let lineNumber = Utils.shouldInsertNewLine(editor) ? editor.selection.active.line + 2 : editor.selection.active.line + 1;
   let trelloCardDesc = `${trelloToDo.description}`;
-  //*${path.basename(editor.document.fileName)} at Line ${lineNumber}*`;
+
 
   let options = {
     method: "POST",
