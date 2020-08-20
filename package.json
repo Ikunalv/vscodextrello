@@ -3,7 +3,12 @@
   "displayName": "VSCode X Trello",
   "description": "",
   "version": "0.0.1",
-  "publisher": "KunalV",
+  "publisher": "kunalvaidya",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ikunalv/vscodextrello"
+  },
+  "icon": "vscodextrello-icon.png",
   "author": {
     "email": "kvaidya2917@gmail.com",
     "name": "Kunal Vaidya",

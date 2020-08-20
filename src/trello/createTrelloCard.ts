@@ -291,7 +291,6 @@ async function createTrelloCard(trelloToDo: TrelloToDo) {
   let apiUrl = `${Constants.TRELLO_BASE_URL}${apiCall}`;
   let trelloCardDesc = `${trelloToDo.description}`;
 
-
   let options = {
     method: "POST",
     url: apiUrl,
@@ -316,9 +315,8 @@ async function createTrelloCard(trelloToDo: TrelloToDo) {
     }
 
     trelloToDo.url = JSON.parse(body).url;
-    //Utils.insertToDoText(editor, trelloToDo.title, trelloToDo.url, "Trello Card");
     vscode.window.showInformationMessage(
-      `Trello Card Created!\n${trelloToDo.url}`
+      `TODO Task Pinned on Trello!\n${trelloToDo.url}`
     );
   });
 }
