@@ -4,7 +4,7 @@ Welcome to VSCode X Trello extension for VS Code! This extention provide the fol
 
 ## Features
 
-- Extracts all the TODO comments from the active file
+- Extracts all the TODO comments from the current file
 - Pins the TODO comments as a task card on your trello boards
 - Describes the TODO task on the board with the line number and th file from which the TODO is pinned
 
