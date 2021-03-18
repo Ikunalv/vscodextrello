@@ -1,4 +1,4 @@
-Download the extension from Visual Studio Marketplace : [https://marketplace.visualstudio.com/items?itemName=kunalvaidya.vscodextrello](VSCodeXTrello)
+Download the extension from Visual Studio Marketplace : [VSCodeXTrello](https://marketplace.visualstudio.com/items?itemName=kunalvaidya.vscodextrello)
 
 # VSCode X Trello
 
