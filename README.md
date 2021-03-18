@@ -1,3 +1,5 @@
+Download the extension from Visual Studio Marketplace : [https://marketplace.visualstudio.com/items?itemName=kunalvaidya.vscodextrello](VSCodeXTrello)
+
 # VSCode X Trello
 
 Welcome to VSCode X Trello extension for VS Code! This extention provide the following features:
